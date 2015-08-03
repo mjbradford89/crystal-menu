@@ -1,0 +1,23 @@
+{
+	"name": "steel-menu",
+	"version": "0.0.0",
+	"description": "Steel's menu component",
+	"main": "src/Menu.js",
+	"moduleType": [
+		"es6"
+	],
+	"keywords": [
+		"metal",
+		"steel"
+	],
+	"ignore": [
+		"*",
+		"!src/**/*",
+		"!test/**/*"
+	],
+	"dependencies": {
+		"bootstrap": "~3.3.4",
+		"metal": "metal/metal.js#master",
+		"metal-jquery-adapter": "metal/metal-jquery-adapter#master"
+	}
+}
