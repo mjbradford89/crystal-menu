@@ -9,11 +9,119 @@
 
 	<script src="../bower_components/soyutils/soyutils.js"></script>
 	<script src="../build/globals/menu.js"></script>
+	<style>
+	.btn .caret {
+		margin-left: 3px;
+	}
+
+	.dropup {
+		margin-top: 200px;
+	}
+	</style>
 </head>
 <body>
 	<h1>Menu</h1>
 	<script type="text/javascript">
-		new steel.Menu().render();
+		new steel.Menu({
+			position: 'down',
+			header: steel.SoyComponent.sanitizeHtml('<button class="btn btn-default">Menu Overlay Dropdown<span class="caret"></span></button>'),
+			items: [
+                    {
+                        header: 'Menu Item 1',
+                        submenu: {
+                            items: [
+                                {
+                                    header: 'Menu Item 1.1',
+                                    submenu: {
+                                        items: [
+                                            {
+                                                header: 'Menu Item 1.1.1'
+                                            },
+                                            {
+                                                header: 'Menu Item 1.1.2'
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    header: 'Menu Item 1.2',
+                                    submenu: {
+                                        items: [
+                                            {
+                                                header: 'Menu Item 1.2.1'
+                                            },
+                                            {
+                                                header: 'Menu Item 1.2.2'
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        header: 'Menu Item 2'
+                    },
+                    {
+                        divider: true
+                    },
+                    {
+                        header: 'Menu Item 3',
+                        disabled: true
+                    }
+                ]
+		}).render();
+
+		new steel.Menu({
+			position: 'up',
+			header: steel.SoyComponent.sanitizeHtml('<button class="btn btn-default">Menu Inline Dropup<span class="caret"></span></button>'),
+			layoutMode: 'inline',
+			items: [
+					{
+						header: 'Menu Item 1',
+						submenu: {
+							items: [
+								{
+									header: 'Menu Item 1.1',
+									submenu: {
+										items: [
+											{
+												header: 'Menu Item 1.1.1'
+											},
+											{
+												header: 'Menu Item 1.1.2'
+											}
+										]
+									}
+								},
+								{
+									header: 'Menu Item 1.2',
+									submenu: {
+										items: [
+											{
+												header: 'Menu Item 1.2.1'
+											},
+											{
+												header: 'Menu Item 1.2.2'
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						header: 'Menu Item 2'
+					},
+					{
+						divider: true
+					},
+					{
+						header: 'Menu Item 3',
+						disabled: true
+					}
+				]
+		}).render();
 	</script>
 </body>
 </html>

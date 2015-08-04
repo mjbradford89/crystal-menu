@@ -1,11 +1,19 @@
 {namespace Templates.Menu}
 
 /**
- * This renders the main element.
- * @param elementClasses
  * @param id
+ * @param items
+ * @param? elementClasses
  */
 {template .content}
-	<div id="{$id}" class="{$elementClasses}">
+	<div id="{$id}" class="dropdown {$elementClasses ? $elementClasses : ''}">
+		<div class="menu-item-content">
+			{call Templates.MenuItem.header data="all" /}
+		</div>
+		{if length($items) > 0}
+			<div class="menu-item-submenu">
+				{call Templates.MenuItem.body data="all" /}
+			</div>
+		{/if}
 	</div>
 {/template}

@@ -1,2 +1,130 @@
 .menu {
+    .menu-item-submenu-arrow {
+        display: none;
+    }
+
+    &.open {
+        div > div > .dropdown-menu {
+            display: block;
+        }
+    }
+
+    .menu-item {
+        cursor: pointer;
+        position: relative;
+
+        .menu-item-content a {
+            display: block;
+            padding: 3px 20px;
+            color: #333;
+            white-space: nowrap;
+
+            > * {
+                display: block;
+            }
+
+            &:hover {
+                color: #262626;
+                text-decoration: none;
+            }
+        }
+
+        .menu-item-submenu {
+            display: none;
+
+            .dropdown-menu {
+                left: 100%;
+            }
+        }
+
+        .menu-item-submenu-open {
+            background-color: #f5f5f5;
+
+            &, > .menu-item-submenu {
+                display: block;
+
+                .menu-content {
+                    display: block;
+                }
+            }
+
+            .menu-item-submenu .menu .menu-content {
+                position: static;
+            }
+        }
+
+        .menu-item-shortcut {
+            color: #aaa;
+            float: right;
+        }
+
+        &.menu-item-has-shortcut > .menu-item-content {
+            padding-right: 60px;
+        }
+
+        .menu-item-submenu-arrow {
+            display: block;
+            font-size: 8px;
+            opacity: 0.6;
+            position: absolute;
+            right: 3px;
+            top: 7px;
+        }
+
+        &.disabled .menu-item-content a {
+            color: #999;
+
+            &:hover {
+                background-color: transparent;
+                cursor: not-allowed;
+            }
+        }
+
+        .menu-item-content:hover {
+            background-color: #f5f5f5;
+        }
+    }
+
+    &.menu-inline .menu-item {
+        .menu-item-submenu-arrow {
+            .caret {
+                display: inline-block;
+            }
+        }
+
+        .menu-item-submenu-open {
+            background-color: initial;
+
+            > .menu-item {
+                display: inline-block;
+            }
+        }
+
+        .menu-item-submenu-open {
+            .menu {
+                position: static;
+            }
+
+            .menu-content .menu-item-content {
+                padding-left: 15px;
+            }
+        }
+
+        .menu-content .menu-item-submenu-open ul {
+            background-color: transparent;
+            border: 1px solid #ccc;
+            border-left: 0;
+            border-radius: 0;
+            border-right: 0;
+            box-shadow: none;
+            float: none;
+            margin: 9px 0;
+            min-width: 0;
+        }
+
+        .dropdown-menu .menu-item:last-child .menu-content {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+    }
 }

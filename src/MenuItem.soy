@@ -1,0 +1,38 @@
+{namespace Templates.MenuItem}
+
+/**
+ * @param id
+ * @param header
+ * @param items
+ * @param disabled
+ */
+{template .header}
+	<div id="{$id}-header" data-onclick="{$disabled ? '' : 'toggle'}">
+		<a>{$header}</a>
+		{if length($items) > 0}
+			<div class="menu-item-submenu-arrow">
+				<span class="caret"></span>
+			</div>
+		{/if}
+	</div>
+{/template}
+
+/**
+ * @param id
+ * @param items
+ * @param layoutMode
+ */
+{template .body}
+	<ul id="{$id}-body" class="dropdown-menu menu menu-{$layoutMode}">
+		{foreach $item in $items}
+			<li class="menu-item{$item.disabled ? ' disabled' : ''}{$item.divider ? ' divider' : ''}">
+				<div class="menu-content">
+					{call Templates.Menu.content data="$item.submenu"}
+						{param header: $item.header /}
+						{param disabled: $item.disabled /}
+					{/call}
+				</div>
+			</li>
+		{/foreach}
+	</ul>
+{/template}
