@@ -12,6 +12,15 @@ class Menu extends Dropdown {
 		super(opt_config);
 	}
 
+	attached() {
+		super.attached();
+		this.eventHandler_.add(dom.on('#' + this.element.id + ' .menu-item-leaf', 'click', this.handleItemClick_.bind(this)));
+	}
+
+	handleItemClick_(event) {
+		this.emit('itemSelected', event);
+	}
+
 	close() {
 		super.close();
 

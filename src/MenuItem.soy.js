@@ -35,11 +35,11 @@ if (goog.DEBUG) {
  */
 Templates.MenuItem.body = function(opt_data, opt_ignored, opt_ijData) {
   var output = '<ul id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-body" class="dropdown-menu menu menu-' + soy.$$escapeHtmlAttribute(opt_data.layoutMode) + '">';
-  var itemList35 = opt_data.items;
-  var itemListLen35 = itemList35.length;
-  for (var itemIndex35 = 0; itemIndex35 < itemListLen35; itemIndex35++) {
-    var itemData35 = itemList35[itemIndex35];
-    output += '<li class="menu-item' + soy.$$escapeHtmlAttribute(itemData35.disabled ? ' disabled' : '') + soy.$$escapeHtmlAttribute(itemData35.divider ? ' divider' : '') + '"><div class="menu-content">' + Templates.Menu.content(soy.$$augmentMap(itemData35.submenu, {header: itemData35.header, disabled: itemData35.disabled}), null, opt_ijData) + '</div></li>';
+  var itemList39 = opt_data.items;
+  var itemListLen39 = itemList39.length;
+  for (var itemIndex39 = 0; itemIndex39 < itemListLen39; itemIndex39++) {
+    var itemData39 = itemList39[itemIndex39];
+    output += '<li class="menu-item' + soy.$$escapeHtmlAttribute(itemData39.disabled ? ' disabled' : '') + soy.$$escapeHtmlAttribute(itemData39.divider ? ' divider' : '') + '"><div class="menu-content">' + Templates.Menu.content(soy.$$augmentMap(itemData39.submenu, {header: itemData39.header, disabled: itemData39.disabled}), null, opt_ijData) + '</div></li>';
   }
   output += '</ul>';
   return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);

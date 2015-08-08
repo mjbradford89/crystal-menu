@@ -19,7 +19,10 @@ if (typeof Templates.Menu == 'undefined') { Templates.Menu = {}; }
  * @suppress {checkTypes}
  */
 Templates.Menu.content = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="dropdown ' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? opt_data.elementClasses : '') + '"><div class="menu-item-content">' + Templates.MenuItem.header(opt_data, null, opt_ijData) + '</div>' + ((opt_data.items.length > 0) ? '<div class="menu-item-submenu">' + Templates.MenuItem.body(opt_data, null, opt_ijData) + '</div>' : '') + '</div>');
+  var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="dropdown ' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? opt_data.elementClasses : '') + '">';
+  var hasItems__soy8 = opt_data.items.length > 0;
+  output += '<div class="menu-item-content' + soy.$$escapeHtmlAttribute(hasItems__soy8 ? '' : ' menu-item-leaf') + '">' + Templates.MenuItem.header(opt_data, null, opt_ijData) + '</div>' + ((hasItems__soy8) ? '<div class="menu-item-submenu">' + Templates.MenuItem.body(opt_data, null, opt_ijData) + '</div>' : '') + '</div>';
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
 };
 if (goog.DEBUG) {
   Templates.Menu.content.soyTemplateName = 'Templates.Menu.content';

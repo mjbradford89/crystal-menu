@@ -7,10 +7,11 @@
  */
 {template .content}
 	<div id="{$id}" class="dropdown {$elementClasses ? $elementClasses : ''}">
-		<div class="menu-item-content">
+		{let $hasItems: length($items) > 0 /}
+		<div class="menu-item-content{$hasItems ? '' : ' menu-item-leaf'}">
 			{call Templates.MenuItem.header data="all" /}
 		</div>
-		{if length($items) > 0}
+		{if $hasItems}
 			<div class="menu-item-submenu">
 				{call Templates.MenuItem.body data="all" /}
 			</div>
