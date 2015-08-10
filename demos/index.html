@@ -4,14 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Demo: Menu</title>
 
-	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="../bower_components/steel-bootstrap/build/bootstrap.css">
 	<link rel="stylesheet" href="../build/menu.css">
 
 	<script src="../bower_components/soyutils/soyutils.js"></script>
 	<script src="../build/globals/menu.js"></script>
 	<style>
-	.btn .caret {
-		margin-left: 3px;
+	#box {
+		border: 1px solid #000;
+		float: left;
+		height: 100px;
+		margin-bottom: 10px;
+		margin-right: 20px;
+		width: 100px
 	}
 
 	.dropup {
@@ -21,58 +26,61 @@
 </head>
 <body>
 	<h1>Menu</h1>
+	<div class="clearfix">
+		<div id="box"></div>
+		<span>Last Item Clicked: <span id="message"></span></span>
+	</div>
 	<script type="text/javascript">
-		new steel.Menu({
+		var box = document.getElementById('box');
+		var message = document.getElementById('message');
+
+		var menu1 = new steel.Menu({
 			position: 'down',
 			header: steel.SoyComponent.sanitizeHtml('<button class="btn btn-default">Menu Overlay Dropdown<span class="caret"></span></button>'),
 			items: [
                     {
-                        header: 'Menu Item 1',
+                        header: 'Change Color',
                         submenu: {
                             items: [
-                                {
-                                    header: 'Menu Item 1.1',
-                                    submenu: {
-                                        items: [
-                                            {
-                                                header: 'Menu Item 1.1.1'
-                                            },
-                                            {
-                                                header: 'Menu Item 1.1.2'
-                                            }
-                                        ]
-                                    }
-                                },
-                                {
-                                    header: 'Menu Item 1.2',
-                                    submenu: {
-                                        items: [
-                                            {
-                                                header: 'Menu Item 1.2.1'
-                                            },
-                                            {
-                                                header: 'Menu Item 1.2.2'
-                                            }
-                                        ]
-                                    }
-                                }
-                            ]
+								{
+									header: steel.SoyComponent.sanitizeHtml('<span class="item-cyan">Cyan</span>')
+								},
+								{
+									header: steel.SoyComponent.sanitizeHtml('<span class="item-magenta">Magenta</span>')
+								},
+								{
+									header: steel.SoyComponent.sanitizeHtml('<span class="item-yellow">Yellow</span>')
+								}
+							]
                         }
-                    },
-                    {
-                        header: 'Menu Item 2'
                     },
                     {
                         divider: true
                     },
                     {
-                        header: 'Menu Item 3',
+                        header: 'Change Shape',
                         disabled: true
                     }
                 ]
 		}).render();
 
-		new steel.Menu({
+		menu1.on('itemSelected', function(event) {
+			var color = '#fff',
+				node = event.target;
+
+			if (steel.dom.hasClass(node, 'item-magenta')) {
+				color = '#ff00ff';
+			}
+			else if (steel.dom.hasClass(node, 'item-cyan')) {
+				color = '#00ffff';
+			} else if (steel.dom.hasClass(node, 'item-yellow')) {
+				color = '#ffff00';
+			}
+
+			box.setAttribute('style', 'background-color:' + color + ';');
+		});
+
+		var menu2 = new steel.Menu({
 			position: 'up',
 			header: steel.SoyComponent.sanitizeHtml('<button class="btn btn-default">Menu Inline Dropup<span class="caret"></span></button>'),
 			layoutMode: 'inline',
@@ -122,6 +130,10 @@
 					}
 				]
 		}).render();
+
+		menu2.on('itemSelected', function(event) {
+			message.innerHTML = event.target.innerHTML;
+		});
 	</script>
 </body>
 </html>
