@@ -34,21 +34,13 @@ if (goog.DEBUG) {
  * @suppress {checkTypes}
  */
 Templates.MenuItem.body = function(opt_data, opt_ignored, opt_ijData) {
-  var output = '<ul id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-body" class="dropdown-menu menu menu-' + soy.$$escapeHtmlAttribute(opt_data.layoutMode) + '">';
-  var itemList39 = opt_data.items;
-  var itemListLen39 = itemList39.length;
-  for (var itemIndex39 = 0; itemIndex39 < itemListLen39; itemIndex39++) {
-    var itemData39 = itemList39[itemIndex39];
-    output += '<li class="menu-item' + soy.$$escapeHtmlAttribute(itemData39.disabled ? ' disabled' : '') + soy.$$escapeHtmlAttribute(itemData39.divider ? ' divider' : '') + '"><div class="menu-content">' + Templates.Menu.content(soy.$$augmentMap(itemData39.submenu, {header: itemData39.header, disabled: itemData39.disabled}), null, opt_ijData) + '</div></li>';
-  }
-  output += '</ul>';
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml(output);
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<li class="menu-item' + soy.$$escapeHtmlAttribute(opt_data.item.disabled ? ' disabled' : '') + soy.$$escapeHtmlAttribute(opt_data.item.divider ? ' divider' : '') + '"><div class="menu-content">' + Templates.Menu.content(soy.$$augmentMap(opt_data.item.submenu, {header: opt_data.item.header, disabled: opt_data.item.disabled}), null, opt_ijData) + '</div></li>');
 };
 if (goog.DEBUG) {
   Templates.MenuItem.body.soyTemplateName = 'Templates.MenuItem.body';
 }
 
 Templates.MenuItem.header.params = ["id","header","items","disabled"];
-Templates.MenuItem.body.params = ["id","items","layoutMode"];
+Templates.MenuItem.body.params = ["item"];
 export default Templates.MenuItem;
 /* jshint ignore:end */

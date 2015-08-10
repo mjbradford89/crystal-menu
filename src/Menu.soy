@@ -3,6 +3,7 @@
 /**
  * @param id
  * @param items
+ * @param layoutMode
  * @param? elementClasses
  */
 {template .content}
@@ -13,7 +14,13 @@
 		</div>
 		{if $hasItems}
 			<div class="menu-item-submenu">
-				{call Templates.MenuItem.body data="all" /}
+				<ul id="{$id}-body" class="dropdown-menu menu menu-{$layoutMode}">
+					{foreach $item in $items}
+						{call Templates.MenuItem.body data="all" }
+							{param item: $item /}
+						{/call}
+					{/foreach}
+				</ul>
 			</div>
 		{/if}
 	</div>

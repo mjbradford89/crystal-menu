@@ -18,21 +18,15 @@
 {/template}
 
 /**
- * @param id
- * @param items
- * @param layoutMode
+ * @param item
  */
 {template .body}
-	<ul id="{$id}-body" class="dropdown-menu menu menu-{$layoutMode}">
-		{foreach $item in $items}
-			<li class="menu-item{$item.disabled ? ' disabled' : ''}{$item.divider ? ' divider' : ''}">
-				<div class="menu-content">
-					{call Templates.Menu.content data="$item.submenu"}
-						{param header: $item.header /}
-						{param disabled: $item.disabled /}
-					{/call}
-				</div>
-			</li>
-		{/foreach}
-	</ul>
+		<li class="menu-item{$item.disabled ? ' disabled' : ''}{$item.divider ? ' divider' : ''}">
+			<div class="menu-content">
+				{call Templates.Menu.content data="$item.submenu"}
+					{param header: $item.header /}
+					{param disabled: $item.disabled /}
+				{/call}
+			</div>
+		</li>
 {/template}
