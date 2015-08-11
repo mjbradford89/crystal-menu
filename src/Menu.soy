@@ -4,13 +4,16 @@
  * @param id
  * @param items
  * @param layoutMode
+ * @param disabled
  * @param? elementClasses
  */
 {template .content}
 	<div id="{$id}" class="dropdown {$elementClasses ? $elementClasses : ''}">
 		{let $hasItems: length($items) > 0 /}
-		<div class="menu-item-content{$hasItems ? '' : ' menu-item-leaf'}">
-			{call Templates.MenuItem.header data="all" /}
+		<div class="menu-item-content{$hasItems ? '' : ' menu-item-leaf'}" data-onclick="{$disabled ? '' : 'toggle'}">
+			{call Templates.MenuItem.header data="all" }
+				{param hasItems: $hasItems /}
+			{/call}
 		</div>
 		{if $hasItems}
 			<div class="menu-item-submenu">

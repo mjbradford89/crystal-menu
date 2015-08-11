@@ -3,13 +3,12 @@
 /**
  * @param id
  * @param header
- * @param items
- * @param disabled
+ * @param hasItems
  */
 {template .header}
-	<div id="{$id}-header" data-onclick="{$disabled ? '' : 'toggle'}">
+	<div id="{$id}-header">
 		<a>{$header}</a>
-		{if length($items) > 0}
+		{if $hasItems}
 			<div class="menu-item-submenu-arrow">
 				<span class="caret"></span>
 			</div>
@@ -21,6 +20,7 @@
  * @param item
  */
 {template .body}
+	{if $item}
 		<li class="menu-item{$item.disabled ? ' disabled' : ''}{$item.divider ? ' divider' : ''}">
 			<div class="menu-content">
 				{call Templates.Menu.content data="$item.submenu"}
@@ -29,4 +29,5 @@
 				{/call}
 			</div>
 		</li>
+	{/if}
 {/template}

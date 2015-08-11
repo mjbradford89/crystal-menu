@@ -14,6 +14,16 @@ class MenuItem extends SoyComponent {
 		super(opt_config);
 	}
 
+	decorateInternal() {
+		super.decorateInternal();
+
+		var menu = new steel.Menu({
+			element: this.element
+		});
+
+		menu.decorate();
+	}
+
 	setSubmenu_(val) {
 		if (!val || val instanceof steel.Menu) {
 			return;

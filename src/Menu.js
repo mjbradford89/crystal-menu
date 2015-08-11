@@ -17,6 +17,20 @@ class Menu extends Dropdown {
 		this.eventHandler_.add(dom.on('#' + this.element.id + ' .menu-item-leaf', 'click', this.handleItemClick_.bind(this)));
 	}
 
+	decorateInternal() {
+		super.decorateInternal();
+
+		var items = this.element.querySelectorAll('.dropdown.menu');
+
+		for (var i = 0; i < items.length; i++) {
+			var menuItem = new steel.MenuItem({
+				element: items[i]
+			});
+
+			menuItem.decorate();
+		}
+	}
+
 	handleItemClick_(event) {
 		this.emit('itemSelected', event);
 	}

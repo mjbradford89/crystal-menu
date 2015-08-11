@@ -21,14 +21,14 @@ if (typeof Templates.Menu == 'undefined') { Templates.Menu = {}; }
 Templates.Menu.content = function(opt_data, opt_ignored, opt_ijData) {
   var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="dropdown ' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? opt_data.elementClasses : '') + '">';
   var hasItems__soy8 = opt_data.items.length > 0;
-  output += '<div class="menu-item-content' + soy.$$escapeHtmlAttribute(hasItems__soy8 ? '' : ' menu-item-leaf') + '">' + Templates.MenuItem.header(opt_data, null, opt_ijData) + '</div>';
+  output += '<div class="menu-item-content' + soy.$$escapeHtmlAttribute(hasItems__soy8 ? '' : ' menu-item-leaf') + '" data-onclick="' + soy.$$escapeHtmlAttribute(opt_data.disabled ? '' : 'toggle') + '">' + Templates.MenuItem.header(soy.$$augmentMap(opt_data, {hasItems: hasItems__soy8}), null, opt_ijData) + '</div>';
   if (hasItems__soy8) {
     output += '<div class="menu-item-submenu"><ul id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-body" class="dropdown-menu menu menu-' + soy.$$escapeHtmlAttribute(opt_data.layoutMode) + '">';
-    var itemList21 = opt_data.items;
-    var itemListLen21 = itemList21.length;
-    for (var itemIndex21 = 0; itemIndex21 < itemListLen21; itemIndex21++) {
-      var itemData21 = itemList21[itemIndex21];
-      output += Templates.MenuItem.body(soy.$$augmentMap(opt_data, {item: itemData21}), null, opt_ijData);
+    var itemList24 = opt_data.items;
+    var itemListLen24 = itemList24.length;
+    for (var itemIndex24 = 0; itemIndex24 < itemListLen24; itemIndex24++) {
+      var itemData24 = itemList24[itemIndex24];
+      output += Templates.MenuItem.body(soy.$$augmentMap(opt_data, {item: itemData24}), null, opt_ijData);
     }
     output += '</ul></div>';
   }
@@ -39,6 +39,6 @@ if (goog.DEBUG) {
   Templates.Menu.content.soyTemplateName = 'Templates.Menu.content';
 }
 
-Templates.Menu.content.params = ["id","items","layoutMode"];
+Templates.Menu.content.params = ["id","items","layoutMode","disabled"];
 export default Templates.Menu;
 /* jshint ignore:end */
