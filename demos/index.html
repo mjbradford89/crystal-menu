@@ -10,6 +10,11 @@
 	<script src="../bower_components/soyutils/soyutils.js"></script>
 	<script src="../build/globals/menu.js"></script>
 	<style>
+
+	nav {
+		margin-top: 200px;
+	}
+
 	#box {
 		border: 1px solid #000;
 		float: left;
@@ -19,8 +24,8 @@
 		width: 100px
 	}
 
-	.dropup {
-		margin-top: 200px;
+	#render .menu-item-content a {
+		color: inherit;
 	}
 	</style>
 </head>
@@ -30,39 +35,95 @@
 		<div id="box"></div>
 		<span>Last Item Clicked: <span id="message"></span></span>
 	</div>
+
+	<nav class="navbar navbar-default">
+		<ul class="nav navbar-nav">
+			<li class="dropdown" id="decorate">
+				<a data-onclick="toggle">Menu Overlay Dropdown from HTML<span class="caret"></span></a>
+				<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+				<div class="menu dropdown component">
+				   <div class="menu-item-submenu">
+				      <ul class="dropdown-menu menu menu-overlay">
+				            <li class="menu-item">
+				               <div class="menu-content">
+				                  <div class="menu dropdown component">
+				                     <div class="dropdown ">
+				                        <div class="menu-item-content" data-onclick="toggle">
+				                              <div>
+				                                 <a>Change Color</a>
+				                                 <div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+				                              </div>
+				                        </div>
+				                        <div class="menu-item-submenu">
+				                           <ul class="dropdown-menu menu menu-overlay">
+				                                 <li class="menu-item">
+				                                    <div class="menu-content">
+				                                       <div class="dropdown menu component">
+				                                          <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
+				                                                <div><a><span class="item-cyan">Cyan</span></a></div>
+				                                          </div>
+				                                       </div>
+				                                    </div>
+				                                 </li>
+				                                 <li class="menu-item">
+				                                    <div class="menu-content">
+				                                       <div class="dropdown menu component">
+				                                          <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
+				                                                <div><a><span class="item-magenta">Magenta</span></a></div>
+				                                          </div>
+				                                       </div>
+				                                    </div>
+				                                 </li>
+				                                 <li class="menu-item">
+				                                    <div class="menu-content">
+				                                       <div class="dropdown menu component">
+				                                          <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
+				                                                <div><a><span class="item-yellow">Yellow</span></a></div>
+				                                          </div>
+				                                       </div>
+				                                    </div>
+				                                 </li>
+				                           </ul>
+				                        </div>
+				                     </div>
+				                  </div>
+				               </div>
+				            </li>
+				            <li class="menu-item divider">
+				               <div class="menu-content">
+				                  <div class="dropdown menu component">
+				                     <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
+				                           <div><a>undefined</a></div>
+				                     </div>
+				                  </div>
+				               </div>
+				            </li>
+				            <li class="menu-item disabled">
+				               <div class="menu-content">
+				                  <div class="dropdown menu component">
+				                     <div class="menu-item-content menu-item-leaf" data-onclick="">
+				                           <div><a>Change Shape</a></div>
+				                     </div>
+				                  </div>
+				               </div>
+				            </li>
+				      </ul>
+				   </div>
+				</div>
+			</li>
+			<li class="dropdown">
+				<a id="render"></a>
+			</li>
+		</ul>
+	</nav>
 	<script type="text/javascript">
 		var box = document.getElementById('box');
 		var message = document.getElementById('message');
 
 		var menu1 = new steel.Menu({
 			position: 'down',
-			header: steel.SoyComponent.sanitizeHtml('<button class="btn btn-default">Menu Overlay Dropdown<span class="caret"></span></button>'),
-			items: [
-                    {
-                        header: 'Change Color',
-                        submenu: {
-                            items: [
-								{
-									header: steel.SoyComponent.sanitizeHtml('<span class="item-cyan">Cyan</span>')
-								},
-								{
-									header: steel.SoyComponent.sanitizeHtml('<span class="item-magenta">Magenta</span>')
-								},
-								{
-									header: steel.SoyComponent.sanitizeHtml('<span class="item-yellow">Yellow</span>')
-								}
-							]
-                        }
-                    },
-                    {
-                        divider: true
-                    },
-                    {
-                        header: 'Change Shape',
-                        disabled: true
-                    }
-                ]
-		}).render();
+			element: '#decorate'
+		}).decorate();
 
 		menu1.on('itemSelected', function(event) {
 			var color = '#fff',
@@ -80,9 +141,10 @@
 			box.setAttribute('style', 'background-color:' + color + ';');
 		});
 
+
 		var menu2 = new steel.Menu({
 			position: 'up',
-			header: steel.SoyComponent.sanitizeHtml('<button class="btn btn-default">Menu Inline Dropup<span class="caret"></span></button>'),
+			header: steel.SoyComponent.sanitizeHtml('Menu Inline Dropup From JavaScript<span class="caret"></span>'),
 			layoutMode: 'inline',
 			items: [
 					{
@@ -129,7 +191,7 @@
 						disabled: true
 					}
 				]
-		}).render();
+		}).render('#render');
 
 		menu2.on('itemSelected', function(event) {
 			message.innerHTML = event.target.innerHTML;
