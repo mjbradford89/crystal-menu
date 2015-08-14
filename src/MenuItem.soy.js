@@ -18,29 +18,13 @@ if (typeof Templates.MenuItem == 'undefined') { Templates.MenuItem = {}; }
  * @return {!soydata.SanitizedHtml}
  * @suppress {checkTypes}
  */
-Templates.MenuItem.header = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-header"><a>' + soy.$$escapeHtml(opt_data.header) + '</a>' + ((opt_data.hasItems) ? '<div class="menu-item-submenu-arrow"><span class="caret"></span></div>' : '') + '</div>');
+Templates.MenuItem.content = function(opt_data, opt_ignored, opt_ijData) {
+  return soydata.VERY_UNSAFE.ordainSanitizedHtml('<li id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="menu-item' + soy.$$escapeHtmlAttribute(opt_data.disabled ? ' disabled' : '') + soy.$$escapeHtmlAttribute(opt_data.divider ? ' divider' : '') + '"><div class="menu-content">' + Templates.Menu.content(soy.$$augmentMap(opt_data.submenu, {header: opt_data.header, disabled: opt_data.disabled}), null, opt_ijData) + '</div></li>');
 };
 if (goog.DEBUG) {
-  Templates.MenuItem.header.soyTemplateName = 'Templates.MenuItem.header';
+  Templates.MenuItem.content.soyTemplateName = 'Templates.MenuItem.content';
 }
 
-
-/**
- * @param {Object.<string, *>=} opt_data
- * @param {(null|undefined)=} opt_ignored
- * @param {Object.<string, *>=} opt_ijData
- * @return {!soydata.SanitizedHtml}
- * @suppress {checkTypes}
- */
-Templates.MenuItem.body = function(opt_data, opt_ignored, opt_ijData) {
-  return soydata.VERY_UNSAFE.ordainSanitizedHtml((opt_data.item) ? '<li class="menu-item' + soy.$$escapeHtmlAttribute(opt_data.item.disabled ? ' disabled' : '') + soy.$$escapeHtmlAttribute(opt_data.item.divider ? ' divider' : '') + '"><div class="menu-content">' + Templates.Menu.content(soy.$$augmentMap(opt_data.item.submenu, {header: opt_data.item.header, disabled: opt_data.item.disabled}), null, opt_ijData) + '</div></li>' : '');
-};
-if (goog.DEBUG) {
-  Templates.MenuItem.body.soyTemplateName = 'Templates.MenuItem.body';
-}
-
-Templates.MenuItem.header.params = ["id","header","hasItems"];
-Templates.MenuItem.body.params = ["item"];
+Templates.MenuItem.content.params = ["id","disabled","divider","header","submenu"];
 export default Templates.MenuItem;
 /* jshint ignore:end */

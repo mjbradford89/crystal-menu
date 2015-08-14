@@ -17,20 +17,6 @@ class Menu extends Dropdown {
 		this.eventHandler_.add(dom.on('#' + this.element.id + ' .menu-item-leaf', 'click', this.handleItemClick_.bind(this)));
 	}
 
-	decorateInternal() {
-		super.decorateInternal();
-
-		var items = this.element.querySelectorAll('.dropdown.menu');
-
-		for (var i = 0; i < items.length; i++) {
-			var menuItem = new steel.MenuItem({
-				element: items[i]
-			});
-
-			menuItem.decorate();
-		}
-	}
-
 	handleItemClick_(event) {
 		this.emit('itemSelected', event);
 	}
@@ -56,25 +42,10 @@ class Menu extends Dropdown {
 	getMenuItemSubmenu_() {
 		return this.element.querySelector('.' + Menu.MENU_ITEM_SUBMENU);
 	}
-
-	setItems_(val) {
-		var items = [];
-
-		for (var i = 0; i < val.length; i++) {
-			if (!(val[i] instanceof steel.MenuItem)) {
-				items.push(new steel.MenuItem(val[i]));
-			}
-			else {
-				items.push(val[i]);
-			}
-		}
-		return items;
-	}
 }
 
 Menu.ATTRS = {
 	items:{
-		setter: 'setItems_',
 		validator: Array.isArray,
 		value: []
 	},

@@ -13,26 +13,6 @@ class MenuItem extends SoyComponent {
 	constructor(opt_config) {
 		super(opt_config);
 	}
-
-	decorateInternal() {
-		super.decorateInternal();
-
-		var menu = new steel.Menu({
-			element: this.element
-		});
-
-		menu.decorate();
-	}
-
-	setSubmenu_(val) {
-		if (!val || val instanceof steel.Menu) {
-			return;
-		}
-
-		val = new steel.Menu(val);
-
-		return val;
-	}
 }
 
 /**
@@ -42,6 +22,7 @@ class MenuItem extends SoyComponent {
  * @static
  */
 MenuItem.ELEMENT_CLASSES = 'menuitem';
+MenuItem.ELEMENT_TAG_NAME = 'li';
 
 /**
  * MenuItem attributes definition.
@@ -59,10 +40,7 @@ MenuItem.ATTRS = {
 		value: false
 	},
 
-	header: {},
-
 	submenu: {
-		setter: 'setSubmenu_',
 		validator: function(val) {
 			return core.isObject(val);
 		},

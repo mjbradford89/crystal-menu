@@ -33,6 +33,7 @@
             display: none;
 
             .dropdown-menu {
+                bottom: 0;
                 left: 100%;
             }
         }
@@ -94,10 +95,6 @@
 
         .menu-item-submenu-open {
             background-color: initial;
-
-            > .menu-item {
-                display: inline-block;
-            }
         }
 
         .menu-item-submenu-open {
@@ -105,12 +102,12 @@
                 position: static;
             }
 
-            .menu-content .menu-item-content {
+            .menu-item-content {
                 padding-left: 15px;
             }
         }
 
-        .menu-content .menu-item-submenu-open ul {
+        .menu-item-submenu-open ul {
             background-color: transparent;
             border: 1px solid #ccc;
             border-left: 0;

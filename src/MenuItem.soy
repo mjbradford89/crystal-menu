@@ -2,32 +2,18 @@
 
 /**
  * @param id
+ * @param disabled
+ * @param divider
  * @param header
- * @param hasItems
+ * @param submenu
  */
-{template .header}
-	<div id="{$id}-header">
-		<a>{$header}</a>
-		{if $hasItems}
-			<div class="menu-item-submenu-arrow">
-				<span class="caret"></span>
-			</div>
-		{/if}
-	</div>
-{/template}
-
-/**
- * @param item
- */
-{template .body}
-	{if $item}
-		<li class="menu-item{$item.disabled ? ' disabled' : ''}{$item.divider ? ' divider' : ''}">
-			<div class="menu-content">
-				{call Templates.Menu.content data="$item.submenu"}
-					{param header: $item.header /}
-					{param disabled: $item.disabled /}
-				{/call}
-			</div>
-		</li>
-	{/if}
+{template .content}
+	<li id="{$id}" class="menu-item{$disabled ? ' disabled' : ''}{$divider ? ' divider' : ''}">
+		<div class="menu-content">
+			{call Templates.Menu.content data="$submenu"}
+				{param header: $header /}
+				{param disabled: $disabled /}
+			{/call}
+		</div>
+	</li>
 {/template}

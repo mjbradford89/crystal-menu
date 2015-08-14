@@ -11,7 +11,7 @@
 	<div id="{$id}" class="dropdown {$elementClasses ? $elementClasses : ''}">
 		{let $hasItems: length($items) > 0 /}
 		<div class="menu-item-content{$hasItems ? '' : ' menu-item-leaf'}" data-onclick="{$disabled ? '' : 'toggle'}">
-			{call Templates.MenuItem.header data="all" }
+			{call .header data="all" }
 				{param hasItems: $hasItems /}
 			{/call}
 		</div>
@@ -19,11 +19,31 @@
 			<div class="menu-item-submenu">
 				<ul id="{$id}-body" class="dropdown-menu menu menu-{$layoutMode}">
 					{foreach $item in $items}
-						{call Templates.MenuItem.body data="all" }
-							{param item: $item /}
+						{call Templates.MenuItem.content}
+							{param id: $id + '-item-' + index($item) /}
+							{param header: $item.header /}
+							{param submenu: $item.submenu /}
+							{param divider: $item.divider /}
+							{param disabled: $item.disabled /}
 						{/call}
 					{/foreach}
 				</ul>
+			</div>
+		{/if}
+	</div>
+{/template}
+
+/**
+ * @param id
+ * @param header
+ * @param hasItems
+ */
+{template .header}
+	<div id="{$id}-header">
+		<a>{$header}</a>
+		{if $hasItems}
+			<div class="menu-item-submenu-arrow">
+				<span class="caret"></span>
 			</div>
 		{/if}
 	</div>
