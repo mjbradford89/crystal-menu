@@ -23,10 +23,6 @@
 		margin-right: 20px;
 		width: 100px
 	}
-
-	#render .menu-item-content a {
-		color: inherit;
-	}
 	</style>
 </head>
 <body>
@@ -39,76 +35,78 @@
 	<nav class="navbar navbar-default">
 		<ul class="nav navbar-nav">
 			<li class="dropdown" id="decorate">
-				<a data-onclick="toggle">Menu Overlay Dropdown from HTML<span class="caret"></span></a>
-				<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
-				<div class="menu dropdown component">
-				   <div class="menu-item-submenu">
-				      <ul class="dropdown-menu menu menu-overlay">
-				            <li class="menu-item">
-				               <div class="menu-content">
-				                  <div class="menu dropdown component">
-				                     <div class="dropdown ">
-				                        <div class="menu-item-content" data-onclick="toggle">
-				                              <div>
-				                                 <a>Change Color</a>
-				                                 <div class="menu-item-submenu-arrow"><span class="caret"></span></div>
-				                              </div>
-				                        </div>
-				                        <div class="menu-item-submenu">
-				                           <ul class="dropdown-menu menu menu-overlay">
-				                                 <li class="menu-item">
-				                                    <div class="menu-content">
-				                                       <div class="dropdown menu component">
-				                                          <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
-				                                                <div><a><span class="item-cyan">Cyan</span></a></div>
-				                                          </div>
-				                                       </div>
-				                                    </div>
-				                                 </li>
-				                                 <li class="menu-item">
-				                                    <div class="menu-content">
-				                                       <div class="dropdown menu component">
-				                                          <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
-				                                                <div><a><span class="item-magenta">Magenta</span></a></div>
-				                                          </div>
-				                                       </div>
-				                                    </div>
-				                                 </li>
-				                                 <li class="menu-item">
-				                                    <div class="menu-content">
-				                                       <div class="dropdown menu component">
-				                                          <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
-				                                                <div><a><span class="item-yellow">Yellow</span></a></div>
-				                                          </div>
-				                                       </div>
-				                                    </div>
-				                                 </li>
-				                           </ul>
-				                        </div>
-				                     </div>
-				                  </div>
-				               </div>
-				            </li>
-				            <li class="menu-item divider">
-				               <div class="menu-content">
-				                  <div class="dropdown menu component">
-				                     <div class="menu-item-content menu-item-leaf" data-onclick="toggle">
-				                           <div><a>undefined</a></div>
-				                     </div>
-				                  </div>
-				               </div>
-				            </li>
-				            <li class="menu-item disabled">
-				               <div class="menu-content">
-				                  <div class="dropdown menu component">
-				                     <div class="menu-item-content menu-item-leaf" data-onclick="">
-				                           <div><a>Change Shape</a></div>
-				                     </div>
-				                  </div>
-				               </div>
-				            </li>
-				      </ul>
-				   </div>
+				<div class="menu dropdown component dropup">
+					<div class="menu-item-content" data-onclick="toggle">
+						<div>
+							<a>Menu Inline Dropup From JavaScript<span class="caret"></span></a>
+							<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+						</div>
+					</div>
+					<div class="menu-item-submenu">
+						<ul class="dropdown-menu menu menu-overlay">
+							<li class="menu-item menuitem component">
+								<div class="menu-content">
+									<div class="dropdown menu component">
+										<div class="menu-item-content" data-onclick="toggle">
+											<div>
+												<a>Change Color</a>
+												<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+											</div>
+										</div>
+										<div class="menu-item-submenu">
+											<ul class="dropdown-menu menu menu-overlay">
+												<li class="menu-item menuitem component">
+													<div class="menu-content">
+														<div class="dropdown menu component">
+															<div class="menu-item-content" data-onclick="toggle">
+																<div>
+																	<a>Magenta</a>
+																	<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="menu-item menuitem component">
+													<div class="menu-content">
+														<div class="dropdown menu component">
+															<div class="menu-item-content" data-onclick="toggle">
+																<div>
+																	<a>Yellow</a>
+																	<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+												<li class="menu-item menuitem component">
+													<div class="menu-content">
+														<div class="dropdown menu component">
+															<div class="menu-item-content" data-onclick="toggle">
+																<div>
+																	<a>Cyan</a>
+																	<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="menu-item menuitem component disabled">
+								<div class="menu-content">
+									<div class="dropdown menu component">
+										<div class="menu-item-content menu-item-leaf" data-onclick="toggle">
+											<div><a>Change Shape</a></div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
 			</li>
 			<li class="dropdown">
