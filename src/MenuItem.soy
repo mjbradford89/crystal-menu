@@ -13,6 +13,7 @@
 			{call Templates.Menu.content data="$submenu"}
 				{param header: $header /}
 				{param disabled: $disabled /}
+				{param id: $submenu ? $submenu.id : $id + '-leaf' /}
 			{/call}
 		</div>
 	</li>
