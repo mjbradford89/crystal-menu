@@ -13,6 +13,19 @@
         cursor: pointer;
         position: relative;
 
+        .menu {
+            margin-left: 0;
+            margin-top: 0;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
         .menu-item-content a {
             display: block;
             padding: 3px 20px;
@@ -33,7 +46,6 @@
             display: none;
 
             .dropdown-menu {
-                bottom: 0;
                 left: 100%;
             }
         }
