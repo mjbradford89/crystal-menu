@@ -20,7 +20,7 @@ if (typeof Templates.Menu == 'undefined') { Templates.Menu = {}; }
  */
 Templates.Menu.content = function(opt_data, opt_ignored, opt_ijData) {
   var output = '<div id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '" class="dropdown ' + soy.$$escapeHtmlAttribute(opt_data.elementClasses ? opt_data.elementClasses : '') + '">';
-  var hasItems__soy8 = opt_data.items.length > 0;
+  var hasItems__soy8 = opt_data.items && opt_data.items.length > 0;
   output += '<div class="menu-item-content' + soy.$$escapeHtmlAttribute(hasItems__soy8 ? '' : ' menu-item-leaf') + '" data-onclick="' + soy.$$escapeHtmlAttribute(opt_data.disabled ? '' : 'toggle') + '">' + Templates.Menu.header(soy.$$augmentMap(opt_data, {hasItems: hasItems__soy8}), null, opt_ijData) + '</div>';
   if (hasItems__soy8) {
     output += '<div class="menu-item-submenu"><ul id="' + soy.$$escapeHtmlAttribute(opt_data.id) + '-body" class="dropdown-menu menu menu-' + soy.$$escapeHtmlAttribute(opt_data.layoutMode) + '">';
