@@ -14,7 +14,6 @@ class Menu extends Dropdown {
 
 	attached() {
 		super.attached();
-		this.eventHandler_.add(dom.on('#' + this.element.id + ' .menu-item-leaf', 'click', this.handleItemClick_.bind(this)));
 	}
 
 	handleItemClick_(event) {
@@ -34,9 +33,11 @@ class Menu extends Dropdown {
 	}
 
 	toggle() {
-		dom.toggleClasses(this.element, 'open');
+		if (!this.disabled) {
+			dom.toggleClasses(this.element, 'open');
 
-		dom.toggleClasses(this.getMenuItemSubmenu_(), Menu.MENU_ITEM_SUBMENU_OPEN);
+			dom.toggleClasses(this.getMenuItemSubmenu_(), Menu.MENU_ITEM_SUBMENU_OPEN);
+		}
 	}
 
 	getMenuItemSubmenu_() {
@@ -45,6 +46,11 @@ class Menu extends Dropdown {
 }
 
 Menu.ATTRS = {
+	disabled: {
+		validator: core.isBoolean,
+		value: false
+	},
+
 	items:{
 		validator: Array.isArray,
 		value: []
