@@ -1,3 +1,3 @@
-# steel-menu
+# crystal-menu
 
-Steel's menu component
+Crystal's menu component

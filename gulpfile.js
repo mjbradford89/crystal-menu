@@ -5,7 +5,7 @@ var metal = require('gulp-metal');
 metal.registerTasks({
 	bundleCssFileName: 'menu.css',
 	bundleFileName: 'menu.js',
-	globalName: 'steel',
+	globalName: 'crystal',
 	mainBuildJsTasks: ['build:globals'],
-	moduleName: 'steel-menu'
+	moduleName: 'crystal-menu'
 });

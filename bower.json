@@ -1,14 +1,14 @@
 {
-	"name": "steel-menu",
+	"name": "crystal-menu",
 	"version": "0.0.0",
-	"description": "Steel's menu component",
+	"description": "Crystal's menu component",
 	"main": "src/Menu.js",
 	"moduleType": [
 		"es6"
 	],
 	"keywords": [
 		"metal",
-		"steel"
+		"crystal"
 	],
 	"ignore": [
 		"*",
@@ -20,7 +20,6 @@
 		"metal": "metal/metal.js#master",
 		"metal-jquery-adapter": "metal/metal-jquery-adapter#master",
 		"metal-position": "metal/metal-position#master",
-		"steel-dropdown": "metal/steel-dropdown#master",
-		"steel-bootstrap": "metal/steel-bootstrap#master"
+		"steel-dropdown": "metal/steel-dropdown#master"
 	}
 }

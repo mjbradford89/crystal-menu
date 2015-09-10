@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Demo: Menu</title>
 
-	<link rel="stylesheet" href="../bower_components/steel-bootstrap/build/bootstrap.css">
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="../build/menu.css">
 
 	<script src="../bower_components/soyutils/soyutils.js"></script>
@@ -145,9 +145,9 @@
 		var box = document.getElementById('box');
 		var message = document.getElementById('message');
 
-		var menu1 = new steel.Menu({
+		var menu1 = new crystal.Menu({
 				element: '#decorate',
-				header: steel.SoyComponent.sanitizeHtml('Menu Overlay Dropdown from JavaScript<span class="caret"></span>'),
+				header: crystal.SoyComponent.sanitizeHtml('Menu Overlay Dropdown from JavaScript<span class="caret"></span>'),
 				items: [
 							{
 								header: 'Change Color',
@@ -195,9 +195,9 @@
 		});
 
 
-		var menu2 = new steel.Menu({
+		var menu2 = new crystal.Menu({
 			position: 'up',
-			header: steel.SoyComponent.sanitizeHtml('Menu Inline Dropup from JavaScript<span class="caret"></span>'),
+			header: crystal.SoyComponent.sanitizeHtml('Menu Inline Dropup from JavaScript<span class="caret"></span>'),
 			layoutMode: 'inline',
 			items: [
 					{
