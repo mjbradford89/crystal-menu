@@ -5,15 +5,18 @@
  * @param disabled
  * @param divider
  * @param header
+ * @param menuId
  * @param submenu
+ * @param layoutMode
  */
 {template .content}
 	<li id="{$id}" class="menu-item{$disabled ? ' disabled' : ''}{$divider ? ' divider' : ''}">
-		<div class="menu-content">
+		<div class="menu-content" data-onclick="{$menuId}:handleItemClick_">
 			{call Templates.Menu.content data="$submenu"}
 				{param header: $header /}
 				{param disabled: $disabled /}
 				{param id: $submenu ? $submenu.id : $id + '-leaf' /}
+				{param layoutMode: $layoutMode /}
 			{/call}
 		</div>
 	</li>

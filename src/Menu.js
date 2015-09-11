@@ -1,33 +1,59 @@
 'use strict';
 
-import core from 'bower:metal/src/core';
 import ComponentRegistry from 'bower:metal/src/component/ComponentRegistry';
+import core from 'bower:metal/src/core';
 import dom from 'bower:metal/src/dom/dom';
-import Dropdown from 'bower:steel-dropdown/src/Dropdown';
+import EventHandler from 'bower:metal/src/events/EventHandler';
+import SoyComponent from 'bower:metal/src/soy/SoyComponent';
 import './Menu.soy';
 import './MenuItem.js';
+import 'bower:steel-dropdown/src/Dropdown';
 
-class Menu extends Dropdown {
+class Menu extends SoyComponent {
 	constructor(opt_config) {
 		super(opt_config);
+		this.eventHandler_ = new EventHandler();
 	}
 
 	attached() {
 		super.attached();
-	}
-
-	handleItemClick_(event) {
-		this.emit('itemSelected', event);
+		this.eventHandler_.add(dom.on(document, 'click', this.handleDocClick_.bind(this)));
 	}
 
 	close() {
-		super.close();
+		dom.removeClasses(this.element, 'open');
 
 		dom.removeClasses(this.getMenuItemSubmenu_(), Menu.MENU_ITEM_SUBMENU_OPEN);
 	}
 
+	detached() {
+		super.detached();
+		this.eventHandler_.removeAllListeners();
+	}
+
+	getMenuItemSubmenu_() {
+		return this.element.querySelector('.' + Menu.MENU_ITEM_SUBMENU + ' .dropdown-menu');
+	}
+
+	handleDocClick_(event) {
+		if (this.element.contains(event.target)) {
+			return;
+		}
+		this.close();
+	}
+
+	handleItemClick_(event) {
+		var menuItem = event.handledByComponent;
+
+		if ((menuItem && !menuItem.disabled && !menuItem.submenu) || event.closeParents) {
+			event.closeParents = true;
+			this.emit('itemSelected', event);
+			this.close();
+		}
+	}
+
 	open() {
-		super.open();
+		dom.addClasses(this.element, 'open');
 
 		dom.addClasses(this.getMenuItemSubmenu_(), Menu.MENU_ITEM_SUBMENU_OPEN);
 	}
@@ -38,10 +64,6 @@ class Menu extends Dropdown {
 
 			dom.toggleClasses(this.getMenuItemSubmenu_(), Menu.MENU_ITEM_SUBMENU_OPEN);
 		}
-	}
-
-	getMenuItemSubmenu_() {
-		return this.element.querySelector('.' + Menu.MENU_ITEM_SUBMENU);
 	}
 }
 
@@ -59,6 +81,11 @@ Menu.ATTRS = {
 	layoutMode: {
 		validator: core.isString,
 		value: 'overlay'
+	},
+
+	position: {
+		validator: core.isString,
+		value: 'down'
 	}
 };
 
