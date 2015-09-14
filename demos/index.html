@@ -11,10 +11,6 @@
 	<script src="../build/globals/menu.js"></script>
 	<style>
 
-	nav {
-		margin-top: 200px;
-	}
-
 	#decorate {
 		padding: 15px;
 	}
@@ -39,100 +35,88 @@
 	<nav class="navbar navbar-default">
 		<ul class="nav navbar-nav">
 			<li class="dropdown">
-				<div id="decorate" class="component">
-					<div id="menu" class="dropdown menu component">
-						<div class="menu-item-content" data-onclick="toggle">
-							<div id="menu-header"><a>Menu Overlay Dropdown from JavaScript<span class="caret"></span></a>
-								<div class="menu-item-submenu-arrow"><span class="caret"></span>
-								</div>
-							</div>
+				<div id="decorate" class="menu-overlay menu component">
+					<div id="decorate-dropdown" class="dropdown component menu-item-submenu">
+						<div id="decorate-header" class="menu-item-content" data-onclick="decorate:toggle">
+							<a>Menu Overlay Dropdown from HTML<span class="caret"></span></a>
+							<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
 						</div>
-						<div class="menu-item-submenu">
-							<ul id="menu-body" class="dropdown-menu menu menu-overlay">
-								<li id="menu-item-0" class="menu-item menuitem component">
-									<div class="menu-content">
-										<div id="menu-item-0-s1" class="dropdown menu component">
-											<div class="menu-item-content" data-onclick="toggle">
-												<div id="menu-item-0-s1-header"><a>Colors</a>
-													<div class="menu-item-submenu-arrow"><span class="caret"></span>
+						<ul id="decorate-dropdown-body" class="dropdown-menu">
+							<li id="decorate-item-0" class="menu-item menuitem component">
+								<div class="menu-content" data-onclick="decorate:handleItemClick_">
+									<div id="change-color-submenu" class="menu-overlay menu component">
+										<div id="change-color-submenu-dropdown" class="dropdown component menu-item-submenu">
+											<div id="change-color-submenu-header" class="menu-item-content" data-onclick="change-color-submenu:toggle">
+												<a>Change Color</a>
+												<div class="menu-item-submenu-arrow"><span class="caret"></span></div>
+											</div>
+											<ul id="change-color-submenu-dropdown-body" class="dropdown-menu">
+												<li id="change-color-submenu-item-0" class="menu-item menuitem component">
+													<div class="menu-content" data-onclick="change-color-submenu:handleItemClick_">
+														<div id="change-color-submenu-item-0-leaf" class="menu-overlay no-menu-items menu component">
+															<div id="change-color-submenu-item-0-leaf-dropdown" class="dropdown component menu-item-submenu">
+																<div id="change-color-submenu-item-0-leaf-header" class="menu-item-content" data-onclick="change-color-submenu-item-0-leaf:toggle"><a>Magenta</a></div>
+																<ul id="change-color-submenu-item-0-leaf-dropdown-body" class="dropdown-menu"></ul>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
-											<div class="menu-item-submenu">
-												<ul id="menu-item-0-s1-body" class="dropdown-menu menu menu-overlay">
-													<li id="menu-item-0-s1-item-0" class="menu-item menuitem component">
-														<div class="menu-content">
-															<div id="menu-item-0-s1-item-0-s1" class="dropdown menu component">
-																<div class="menu-item-content menu-item-leaf item-magenta" data-onclick="toggle">
-																	<div id="menu-item-0-s1-item-0-s1-header"><a>Magenta</a>
-																		<div class="menu-item-submenu-arrow"><span class="caret"></span>
-																		</div>
-																	</div>
-																</div>
+												</li>
+												<li id="change-color-submenu-item-1" class="menu-item menuitem component">
+													<div class="menu-content" data-onclick="change-color-submenu:handleItemClick_">
+														<div id="change-color-submenu-item-1-leaf" class="menu-overlay no-menu-items menu component open">
+															<div id="change-color-submenu-item-1-leaf-dropdown" class="dropdown component menu-item-submenu">
+																<div id="change-color-submenu-item-1-leaf-header" class="menu-item-content" data-onclick="change-color-submenu-item-1-leaf:toggle"><a>Cyan</a></div>
+																<ul id="change-color-submenu-item-1-leaf-dropdown-body" class="dropdown-menu menu-item-submenu-open"></ul>
 															</div>
 														</div>
-													</li>
-													<li id="menu-item-0-s1-item-1" class="menu-item menuitem component">
-														<div class="menu-content">
-															<div id="menu-item-0-s1-item-1-s1" class="dropdown menu component">
-																<div class="menu-item-content menu-item-leaf item-cyan" data-onclick="toggle">
-																	<div id="menu-item-0-s1-item-1-s1-header"><a>Cyan</a>
-																		<div class="menu-item-submenu-arrow"><span class="caret"></span>
-																		</div>
-																	</div>
-																</div>
+													</div>
+												</li>
+												<li id="change-color-submenu-item-2" class="menu-item menuitem component">
+													<div class="menu-content" data-onclick="change-color-submenu:handleItemClick_">
+														<div id="change-color-submenu-item-2-leaf" class="menu-overlay no-menu-items menu component">
+															<div id="change-color-submenu-item-2-leaf-dropdown" class="dropdown component menu-item-submenu">
+																<div id="change-color-submenu-item-2-leaf-header" class="menu-item-content" data-onclick="change-color-submenu-item-2-leaf:toggle"><a>Yellow</a></div>
+																<ul id="change-color-submenu-item-2-leaf-dropdown-body" class="dropdown-menu"></ul>
 															</div>
 														</div>
-													</li>
-													<li id="menu-item-0-s1-item-2" class="menu-item menuitem component">
-														<div class="menu-content">
-															<div id="menu-item-0-s1-item-2-s1" class="dropdown menu component">
-																<div class="menu-item-content menu-item-leaf item-yellow" data-onclick="toggle">
-																	<div id="menu-item-0-s1-item-2-s1-header"><a>Yellow</a>
-																		<div class="menu-item-submenu-arrow"><span class="caret"></span>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-												</ul>
-											</div>
+													</div>
+												</li>
+											</ul>
 										</div>
 									</div>
-								</li>
-								<li id="menu-item-1" class="menu-item menuitem component">
-									<div class="menu-content">
-										<div id="menu-item-1-leaf" class="dropdown menu component">
-											<div class="menu-item-content menu-item-leaf" data-onclick="toggle">
-												<div id="menu-item-1-leaf-header"><a>Change Shape</a>
-												</div>
-											</div>
+								</div>
+							</li>
+							<li id="decorate-item-1" class="menu-item disabled menuitem component">
+								<div class="menu-content" data-onclick="decorate:handleItemClick_">
+									<div id="decorate-item-1-leaf" class="menu-overlay no-menu-items menu component">
+										<div id="decorate-item-1-leaf-dropdown" class="dropdown component menu-item-submenu">
+											<div id="decorate-item-1-leaf-header" class="menu-item-content" data-onclick="decorate-item-1-leaf:toggle"><a>Change Shape</a></div>
+											<ul id="decorate-item-1-leaf-dropdown-body" class="dropdown-menu"></ul>
 										</div>
 									</div>
-								</li>
-								<li id="menu-item-2" class="menu-item divider menuitem component">
-									<div class="menu-content">
-										<div id="menu-item-2-leaf" class="dropdown menu component">
-											<div class="menu-item-content menu-item-leaf" data-onclick="toggle">
-												<div id="menu-item-2-leaf-header"><a>undefined</a>
-												</div>
-											</div>
+								</div>
+							</li>
+							<li id="decorate-item-2" class="menu-item divider menuitem component">
+								<div class="menu-content" data-onclick="decorate:handleItemClick_">
+									<div id="decorate-item-2-leaf" class="menu-overlay no-menu-items menu component">
+										<div id="decorate-item-2-leaf-dropdown" class="dropdown component menu-item-submenu">
+											<div id="decorate-item-2-leaf-header" class="menu-item-content" data-onclick="decorate-item-2-leaf:toggle"><a>undefined</a></div>
+											<ul id="decorate-item-2-leaf-dropdown-body" class="dropdown-menu"></ul>
 										</div>
 									</div>
-								</li>
-								<li id="menu-item-3" class="menu-item disabled menuitem component">
-									<div class="menu-content">
-										<div id="menu-item-3-leaf" class="dropdown menu component">
-											<div class="menu-item-content menu-item-leaf" data-onclick="">
-												<div id="menu-item-3-leaf-header"><a>Clear</a>
-												</div>
-											</div>
+								</div>
+							</li>
+							<li id="decorate-item-3" class="menu-item menuitem component">
+								<div class="menu-content" data-onclick="decorate:handleItemClick_">
+									<div id="decorate-item-3-leaf" class="menu-overlay no-menu-items menu component">
+										<div id="decorate-item-3-leaf-dropdown" class="dropdown component menu-item-submenu">
+											<div id="decorate-item-3-leaf-header" class="menu-item-content" data-onclick="decorate-item-3-leaf:toggle"><a>Clear</a></div>
+											<ul id="decorate-item-3-leaf-dropdown-body" class="dropdown-menu"></ul>
 										</div>
 									</div>
-								</li>
-							</ul>
-						</div>
+								</div>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</li>
@@ -145,13 +129,17 @@
 		var box = document.getElementById('box');
 		var message = document.getElementById('message');
 
-		var menu1 = new crystal.Menu({
-				element: '#decorate',
-				header: crystal.SoyComponent.sanitizeHtml('Menu Overlay Dropdown from JavaScript<span class="caret"></span>'),
-				items: [
+		var menu1 = new crystal.Menu(
+				{
+					header: crystal.SoyComponent.sanitizeHtml('Menu Overlay Dropdown from HTML<span class="caret"></span>'),
+					element: '#decorate',
+					layoutMode: 'overlay',
+					position: 'down',
+					items: [
 							{
 								header: 'Change Color',
 								submenu: {
+									id: 'change-color-submenu',
 									items: [
 										{
 											header: 'Magenta'
@@ -164,30 +152,31 @@
 										}
 									]
 								}
-						},
-						{
-							header: 'Change Shape',
-							disabled: true
-						},
-						{
-							divider: true
-						},
-						{
-							header: 'Clear'
-						}
-				]
-		}).decorate();
+							},
+							{
+								header: 'Change Shape',
+								disabled: true
+							},
+							{
+								divider: true
+							},
+							{
+								header: 'Clear'
+							}
+					]
+				}
+			).decorate();
 
 		menu1.on('itemSelected', function(event) {
 			var color = '#fff',
-				node = event.delegateTarget;
+				node = event.target;
 
-			if (node.innerHTML.indexOf('Magenta') > 0) {
+			if (node.innerHTML.indexOf('Magenta') > -1) {
 				color = '#ff00ff';
 			}
-			else if (node.innerHTML.indexOf('Cyan') > 0) {
+			else if (node.innerHTML.indexOf('Cyan') > -1) {
 				color = '#00ffff';
-			} else if (node.innerHTML.indexOf('Yellow') > 0) {
+			} else if (node.innerHTML.indexOf('Yellow') > -1) {
 				color = '#ffff00';
 			}
 

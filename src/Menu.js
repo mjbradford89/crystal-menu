@@ -73,7 +73,7 @@ Menu.ATTRS = {
 		value: false
 	},
 
-	items:{
+	items: {
 		validator: Array.isArray,
 		value: []
 	},
