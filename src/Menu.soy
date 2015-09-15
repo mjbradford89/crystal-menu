@@ -11,7 +11,7 @@
  */
 {template .content}
 	{let $hasItems: $items and length($items) > 0 /}
-	<div id="{$id}" class="menu-{$layoutMode}{$hasItems ? '' : ' no-menu-items'}{$elementClasses ? ' ' + $elementClasses : ''}">
+	<div id="{$id}" class="menu-{$layoutMode}{$elementClasses ? ' ' + $elementClasses : ''}">
 		{call Templates.Dropdown.content}
 			{param body kind="html"}
 				{if $hasItems}
