@@ -39,6 +39,6 @@ if (goog.DEBUG) {
   Templates.Menu.content.soyTemplateName = 'Templates.Menu.content';
 }
 
-Templates.Menu.content.params = ["header","id","items","layoutMode","position"];
+Templates.Menu.content.params = ["header","id","items","layoutMode","position","elementClasses"];
 export default Templates.Menu;
 /* jshint ignore:end */

@@ -7,7 +7,7 @@ import EventHandler from 'bower:metal/src/events/EventHandler';
 import SoyComponent from 'bower:metal/src/soy/SoyComponent';
 import './Menu.soy';
 import './MenuItem.js';
-import 'bower:steel-dropdown/src/Dropdown';
+import 'bower:crystal-dropdown/src/Dropdown';
 
 
 /**
